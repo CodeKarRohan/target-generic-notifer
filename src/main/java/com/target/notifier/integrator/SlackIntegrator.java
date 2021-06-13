@@ -15,8 +15,8 @@ import org.apache.logging.log4j.Logger;
 public class SlackIntegrator {
     private static final Logger LOG = LogManager.getLogger();
     private String slackId;
-    public DeliveryStatus sendSlackMessage(Slack slack)
-    {
+
+    public DeliveryStatus sendSlackMessage(Slack slack) {
         //stubbed
         LOG.info("Message is sent successfully from [{}], to [{}], message [{}] ",
                 slack.getFrom(), slack.getSlackId(), slack.getMessage().getMessage());

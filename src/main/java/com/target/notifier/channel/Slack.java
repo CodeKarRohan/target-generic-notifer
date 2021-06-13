@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Slack implements  Channel {
+public class Slack implements Channel {
 
     private String slackId;
     private Message message;

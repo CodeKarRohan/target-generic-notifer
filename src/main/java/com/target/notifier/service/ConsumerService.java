@@ -11,7 +11,9 @@ import java.util.List;
 public interface ConsumerService {
 
     Consumer createConsumer(Consumer consumer) throws ConsumerException;
+
     List<Consumer> getAllConsumer();
+
     Consumer getConsumer(String name);
 
 }

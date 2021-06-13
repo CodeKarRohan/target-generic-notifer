@@ -18,8 +18,7 @@ public class EmailService {
     private static final Logger LOG = LogManager.getLogger();
     String emailId;
 
-    public DeliveryStatus sendEmailMessage(Email email)
-    {
+    public DeliveryStatus sendEmailMessage(Email email) {
         //stubbed
         LOG.info("Email is sent successfully from [{}], to [{}], message [{}] ",
                 email.getFrom(), email.getEmailId(), email.getMessage().getMessage());

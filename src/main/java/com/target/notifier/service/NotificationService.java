@@ -14,7 +14,7 @@ public interface NotificationService {
 
     List<NotificationResponse> notifyAll(Message message);
 
-    List<NotificationResponse> notifyConsumers(String topicName, Message message ) throws NotificationException;
+    List<NotificationResponse> notifyConsumers(String topicName, Message message) throws NotificationException;
 
     List<NotificationResponse> notifyConsumer(String topicName, String consumerName, Message message) throws NotificationException;
 

@@ -1,8 +1,8 @@
 package com.target.notifier.exception;
 
-public class NotificationException extends  Throwable {
+public class NotificationException extends Throwable {
 
-    public  NotificationException(String message){
+    public NotificationException(String message) {
 
         super(message);
     }

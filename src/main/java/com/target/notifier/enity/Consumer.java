@@ -20,20 +20,20 @@ public class Consumer {
 
     private String emailId;
 
-    private  String slackId;
+    private String slackId;
 
     private short notificationType;
 
     private int topicId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(insertable = false, updatable = false, name ="topicId",
+    @JoinColumn(insertable = false, updatable = false, name = "topicId",
             referencedColumnName = "id")
     private Topic topic;
 
 
     @Override
-    public  int hashCode(){
+    public int hashCode() {
         return this.getId();
     }
 

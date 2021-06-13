@@ -27,7 +27,7 @@ public class ConsumerController {
     HttpEntity<Consumer> createNewConsumer(@RequestBody Consumer consumer)
             throws ConsumerException {
 
-        Consumer cons  = consumerService.createConsumer(consumer);
+        Consumer cons = consumerService.createConsumer(consumer);
         return new ResponseEntity<Consumer>(cons, new HttpHeaders(), HttpStatus.CREATED);
 
     }
@@ -38,10 +38,10 @@ public class ConsumerController {
     HttpEntity<List<Consumer>> GetAllConsumer()
             throws ConsumerException {
 
-        List<Consumer> cons  = consumerService.getAllConsumer();
+        List<Consumer> cons = consumerService.getAllConsumer();
 
-        if (null == cons || cons.size() <=0){
-            throw  new ConsumerException("No consumer found");
+        if (null == cons || cons.size() <= 0) {
+            throw new ConsumerException("No consumer found");
         }
         return new ResponseEntity<List<Consumer>>(cons, new HttpHeaders(),
                 HttpStatus.OK);

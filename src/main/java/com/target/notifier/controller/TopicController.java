@@ -25,10 +25,10 @@ public class TopicController {
     @PostMapping("")
     @ApiOperation(value = "Creates new topic, returns the same.",
             notes = "Api is used to create new Topic.")
-    HttpEntity<Topic> createTopic(@RequestBody Topic topic) throws  TopicException{
+    HttpEntity<Topic> createTopic(@RequestBody Topic topic) throws TopicException {
 
-         Topic newTopic = null;
-            newTopic = topicService.createTopic(topic);
+        Topic newTopic = null;
+        newTopic = topicService.createTopic(topic);
         return new ResponseEntity<Topic>(newTopic, new HttpHeaders(), HttpStatus.CREATED);
 
 
@@ -37,13 +37,13 @@ public class TopicController {
     @GetMapping("")
     @ApiOperation(value = "Returns list of all topics.",
             notes = "Api is used get all topics.")
-    HttpEntity<List<Topic>> getAllTopic() throws  TopicException{
+    HttpEntity<List<Topic>> getAllTopic() throws TopicException {
 
         List<Topic> topics = null;
         topics = topicService.getAllTopic();
 
-        if (null == topics || topics.size() <= 0){
-            throw  new TopicException("No topics found");
+        if (null == topics || topics.size() <= 0) {
+            throw new TopicException("No topics found");
         }
         return new ResponseEntity<List<Topic>>(topics, new HttpHeaders(), HttpStatus.OK);
 

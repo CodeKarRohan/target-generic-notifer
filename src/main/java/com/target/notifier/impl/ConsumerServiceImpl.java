@@ -20,22 +20,22 @@ public class ConsumerServiceImpl implements ConsumerService {
     @Override
     public Consumer createConsumer(Consumer consumer) throws ConsumerException {
 
-       if (consumer == null ){
-           throw new ConsumerException("Invalid consumer");
-       }
+        if (consumer == null) {
+            throw new ConsumerException("Invalid consumer");
+        }
 
-       if(!ValidationUtil.isStringValid(consumer.getName())){
-           throw new ConsumerException("Invalid consumer name");
-       }
-       if (consumer.getNotificationType() <= 0){
-           consumer.setNotificationType((short) 1);
-       }
+        if (!ValidationUtil.isStringValid(consumer.getName())) {
+            throw new ConsumerException("Invalid consumer name");
+        }
+        if (consumer.getNotificationType() <= 0) {
+            consumer.setNotificationType((short) 1);
+        }
 
-       if (!ValidationUtil.EmailValidator(consumer.getEmailId())){
-           throw new ConsumerException("Invalid email  id");
-       }
+        if (!ValidationUtil.EmailValidator(consumer.getEmailId())) {
+            throw new ConsumerException("Invalid email  id");
+        }
 
-       return  consumerRepository.save(consumer);
+        return consumerRepository.save(consumer);
 
     }
 

@@ -11,8 +11,11 @@ import java.util.List;
 public interface TopicService {
 
     Topic getATopic(String name);
+
     List<Topic> getAllTopic();
+
     Topic createTopic(Topic topic) throws TopicException;
+
     Topic updateTopic(Topic topic);
 
 

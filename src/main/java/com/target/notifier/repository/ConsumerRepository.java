@@ -10,6 +10,7 @@ import java.util.List;
 public interface ConsumerRepository extends JpaRepository<Consumer, Integer> {
 
     List<Consumer> findByTopicId(int topicId);
+
     List<Consumer> findByTopicIdAndName(int topicId, String consumerName);
 
 }

@@ -14,7 +14,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
-
 @EnableSwagger2
 @Configuration
 public class Swagger2Config {
@@ -27,6 +26,7 @@ public class Swagger2Config {
                 .paths(PathSelectors.regex("/api.*"))
                 .build().apiInfo(apiEndPointsInfo());
     }
+
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Generic Notifier")
                 .description("Application used foe sending notification.")

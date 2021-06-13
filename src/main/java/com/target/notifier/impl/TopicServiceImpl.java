@@ -31,17 +31,16 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public Topic createTopic(Topic topic) throws TopicException {
 
-        if (null == topic){
-            throw  new TopicException("Invalid topic passed");
+        if (null == topic) {
+            throw new TopicException("Invalid topic passed");
         }
-        if (!ValidationUtil.isStringValid(topic.getName())){
-            throw  new TopicException("Invalid topic name");
+        if (!ValidationUtil.isStringValid(topic.getName())) {
+            throw new TopicException("Invalid topic name");
 
         }
 
         return topicRepository.save(topic);
     }
-
 
 
     @Override

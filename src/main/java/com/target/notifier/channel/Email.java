@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Email implements  Channel {
+public class Email implements Channel {
 
     private String emailId;
     private Message message;
     private String from;
-
-
 
 
     @Override

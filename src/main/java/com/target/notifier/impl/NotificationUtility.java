@@ -13,24 +13,24 @@ import java.util.Map;
 
 public class NotificationUtility {
 
-    public  void sendMail(Channel channel,
-                          Consumer consumer,
-                          Message message,
-                          Map<Consumer, MessageDelivery> response){
+    public void sendMail(Channel channel,
+                         Consumer consumer,
+                         Message message,
+                         Map<Consumer, MessageDelivery> response) {
 
-        Email email = (Email)channel;
+        Email email = (Email) channel;
         email.setEmailId(consumer.getEmailId());
         email.setFrom(message.getFrom());
         email.setMessage(message);
         response.put(consumer, email.sendMessage());
     }
 
-    public void sendSlackMessae(Channel channel ,
+    public void sendSlackMessae(Channel channel,
                                 Consumer consumer,
                                 Message message,
-                                Map<Consumer, MessageDelivery> response){
+                                Map<Consumer, MessageDelivery> response) {
 
-        Slack slack = (Slack)channel;
+        Slack slack = (Slack) channel;
         slack.setSlackId(consumer.getSlackId());
         slack.setFrom(message.getFrom());
         slack.setMessage(message);
@@ -41,32 +41,31 @@ public class NotificationUtility {
     }
 
     public List<NotificationResponse> responseBuilder(Map<Consumer,
-            MessageDelivery> response){
+            MessageDelivery> response) {
 
         List<NotificationResponse> responses = new ArrayList<>();
 
-        for (Consumer c : response.keySet()){
+        for (Consumer c : response.keySet()) {
             NotificationResponse c1 = new NotificationResponse();
-           c1.setConsumerName(c.getName());
-           c1.setMessageDelivery(response.get(c));
-           c1.setTopicName(c.getTopic().getName());
-           responses.add(c1);
+            c1.setConsumerName(c.getName());
+            c1.setMessageDelivery(response.get(c));
+            c1.setTopicName(c.getTopic().getName());
+            responses.add(c1);
 
         }
 
-        return  responses;
+        return responses;
 
     }
 
 
     /**
-     *
      * @param topicRepository
      * @param name
      * @return
      */
-    public  List<Topic> getAllTopicByName(TopicRepository topicRepository,
-                                          String name){
+    public List<Topic> getAllTopicByName(TopicRepository topicRepository,
+                                         String name) {
 
         return topicRepository.findByName(name);
     }
@@ -75,26 +74,23 @@ public class NotificationUtility {
     public void performNotificationOperation(
             List<Consumer> consumers,
             Message message,
-            Map<Consumer, MessageDelivery> finalStatus){
+            Map<Consumer, MessageDelivery> finalStatus) {
         ChannelFactory channelFactory = new ChannelFactory();
         Channel channel = null;
-        for( Consumer consumer : consumers){
+        for (Consumer consumer : consumers) {
 
-            if (consumer.getNotificationType() == 1){
+            if (consumer.getNotificationType() == 1) {
                 //send mail
                 channel = channelFactory.getChannel("EMAIL");
-                this.sendMail(channel,consumer,message, finalStatus);
-            }
-            else if (consumer.getNotificationType() == 2){
+                this.sendMail(channel, consumer, message, finalStatus);
+            } else if (consumer.getNotificationType() == 2) {
                 channel = channelFactory.getChannel("SLACK");
-                this.sendSlackMessae(channel,consumer,message, finalStatus);
-            }
-            else
-            {
+                this.sendSlackMessae(channel, consumer, message, finalStatus);
+            } else {
                 channel = channelFactory.getChannel("EMAIL");
-                this.sendMail(channel,consumer,message, finalStatus);
+                this.sendMail(channel, consumer, message, finalStatus);
                 channel = channelFactory.getChannel("SLACK");
-                this.sendSlackMessae(channel,consumer,message, finalStatus);
+                this.sendSlackMessae(channel, consumer, message, finalStatus);
             }
         }
 

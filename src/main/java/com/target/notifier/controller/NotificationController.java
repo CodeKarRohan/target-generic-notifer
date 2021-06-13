@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/notification")
-@Api(value="Notification sender", description="Operations pertaining to sending notification.")
+@Api(value = "Notification sender", description = "Operations pertaining to sending notification.")
 public class NotificationController {
 
     @Autowired
@@ -27,14 +27,13 @@ public class NotificationController {
 
 
     /**
-     *
      * @param message
      * @return
      * @throws NotificationException
      */
     @PostMapping("")
     @ApiOperation(value = "Returns list of messages sent with consumer details",
-    notes = "Api is used for sending notification to all consumers.")
+            notes = "Api is used for sending notification to all consumers.")
     HttpEntity<List<NotificationResponse>> sendNotificationToAll(
             @RequestBody Message message) throws NotificationException {
         List<NotificationResponse> res =
@@ -45,7 +44,6 @@ public class NotificationController {
 
 
     /**
-     *
      * @param name
      * @param message
      * @return
@@ -56,7 +54,7 @@ public class NotificationController {
             notes = "Api is used for sending notification to all consumers " +
                     "subscribed to a particular topic.")
     HttpEntity<List<NotificationResponse>> sendNotificationToTopic(
-            @PathVariable(value ="name") String name,
+            @PathVariable(value = "name") String name,
             @RequestBody Message message) throws NotificationException {
 
         List<NotificationResponse> res =
@@ -64,11 +62,10 @@ public class NotificationController {
         return new ResponseEntity<List<NotificationResponse>>(
                 res, new HttpHeaders(), HttpStatus.OK);
 
-     }
+    }
 
 
     /**
-     *
      * @param message
      * @param name
      * @param consumerName
@@ -80,8 +77,8 @@ public class NotificationController {
             notes = "Api is used for sending notification to a particular consumer.")
     HttpEntity<List<NotificationResponse>> sendNotificationToConsumer(
             @RequestBody Message message,
-            @PathVariable(value ="name") String name,
-            @PathVariable(value ="consumerName") String consumerName) throws NotificationException {
+            @PathVariable(value = "name") String name,
+            @PathVariable(value = "consumerName") String consumerName) throws NotificationException {
 
         List<NotificationResponse> res = notificationService.notifyConsumer(name,
                 consumerName, message);
@@ -91,7 +88,6 @@ public class NotificationController {
     }
 
     /**
-     *
      * @param message
      * @param mailId
      * @param slackid
